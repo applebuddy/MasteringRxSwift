@@ -21,3 +21,28 @@ let observableOf2 = Observable.of([0, 1, 2])
 let observableFrom = Observable.from([0, 1, 2, 3, 4])
 
 // 다음 시간에 Observable들에 대한 구독이 어떻게 생성되는지를 알아보자.
+
+// MARK: - lecture 10. Implementing Subscriptions
+observableFrom.subscribe { event in
+  debugPrint(event)
+  if let element = event.element {
+    // from 연산자는 배열 내의 원소가 순차적으로 방출됩니다.
+    print(element)
+  }
+  // 모든 값이 방출 된 이후에는 completed 이벤트가 방출됩니다.
+}
+
+observableOf2.subscribe { event in
+  print(event)
+  if let element = event.element {
+    // of 연산자는 배열타입도 통짜로 방출합니다. [1, 2, 3, 4, 5] 배열이 있을때, from 처럼 각 원소 순차 방출이 아닌 배열 하나를 통짜로 방출
+    print(element)
+  }
+}
+
+// onNext 클로져를 통해 다음 방출하는 값을 확인할 수 있다.
+observableOf2.subscribe(onNext: { element in
+  print(element)
+})
+
+// 사용한 Observable은 적절하게 dispose 해줄 의무가 있다. lecture 11에서 알아보자.

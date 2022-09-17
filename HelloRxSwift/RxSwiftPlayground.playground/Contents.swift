@@ -1,10 +1,42 @@
 import UIKit
 import RxSwift
+import RxCocoa
+
+// MARK: - 17. BehaviorRelay
+// * BehaviorReplay를 사용하기 위해서는 RxCocoa 라이브러리가 필요합니다.
+// BehaviorRelay의 value 프로퍼티는 read-only 이므로 accept 메서드를 통해 값을 설정 할 수 있다.
+
+let disposeBag = DisposeBag()
+let relay = BehaviorRelay(value: "Initial Value")
+
+relay.asObservable()
+  .subscribe {
+    print($0) // next(Initial Value)
+  }
+
+relay.accept("Secondary Value!!")
+
+// BehaviorRelay에 배열값을 설정하는 방법
+let relay2 = BehaviorRelay(value: [1])
+// accept를 사용하면 이전의 값은 사라짐을 인지해야한다.
+// 1) value 프로퍼티 + 새로 넣을 값을 추가하여 accept에 넣어준다.
+relay2.accept(relay2.value + [2])
+var relayValue = relay2.value
+// 2) relay의 value 프로퍼티 값을 저장후, 변화시켰다가 변화시킨 값을 accept 하는 방법
+relayValue.append(2)
+relayValue.append(3)
+relay2.accept(relayValue)
+
+relay2.asObservable()
+  .subscribe {
+    print($0)
+  }
 
 // MARK: - 15. ReplaySubject
 // ReplaySubject는 bufferSize를 갖습니다.
 // 특정 bufferSize에 맞게 replay를 하고자 하는 경우, ReplaySubject를 유용하게 사용 가능합니다.
 
+/*
 let disposeBag = DisposeBag()
 let subject = ReplaySubject<String>.create(bufferSize: 2)
 
@@ -26,6 +58,7 @@ print("[Subscription 2]")
 subject.subscribe {
   print($0)
 }
+ */
 
 
 // MARK: - 14. Behavior Subjects

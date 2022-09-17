@@ -1,6 +1,33 @@
 import UIKit
 import RxSwift
 
+// MARK: - 15. ReplaySubject
+// ReplaySubject는 bufferSize를 갖습니다.
+// 특정 bufferSize에 맞게 replay를 하고자 하는 경우, ReplaySubject를 유용하게 사용 가능합니다.
+
+let disposeBag = DisposeBag()
+let subject = ReplaySubject<String>.create(bufferSize: 2)
+
+subject.onNext("Issue 1")
+subject.onNext("Issue 2")
+subject.onNext("Issue 3")
+
+subject.subscribe {
+  print($0)
+  // next(Issue 2)
+  // next(Issue 3)
+}
+
+subject.onNext("Issue 4")
+subject.onNext("Issue 5")
+subject.onNext("Issue 6")
+
+print("[Subscription 2]")
+subject.subscribe {
+  print($0)
+}
+
+
 // MARK: - 14. Behavior Subjects
 // BehaviorSubject는 PublishSubject와 달리 초기값을 갖고 있습니다.
 // BehaviorSubject는 초기값을 갖고 있으므로 항상 이벤트를 출력하거나 줄 수 있습니다. 이때 전달하는 이벤트는 가장 마지막에 방출한 이벤트입니다.

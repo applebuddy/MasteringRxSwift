@@ -1,6 +1,22 @@
 import UIKit
 import RxSwift
-import RxCocoa
+
+// MARK: - Section 7. Transforming Operators
+// MARK: 47. To Array Operator
+let disposeBag = DisposeBag()
+Observable.of(1, 2, 3, 4, 5)
+  .toArray() // Single<[Int]>
+  .asObservable() // Observable<[Int]>>
+  .subscribe(onNext: {
+    // toArray()는 Single Observable이벤트를 방출한다.
+    print($0)
+  }).disposed(by: disposeBag)
+
+Observable.of(1, 2, 3, 4, 5)
+  .filter { $0 % 2 == 0 }
+  .subscribe(onNext: {
+    print($0)
+  }).disposed(by: disposeBag)
 
 // MARK: 36. TakeUntil Operator
 // trigger subject가 trigger하기 전까지 값을 방출한다.

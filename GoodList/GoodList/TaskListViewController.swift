@@ -46,10 +46,17 @@ class TaskListViewController: UIViewController {
     }).disposed(by: disposeBag)
   }
   
+  private func updateTableView() {
+    DispatchQueue.main.async { [weak self] in
+      self?.tableView.reloadData()
+    }
+  }
+  
   private func filterTasks(by priority: Priority?) {
     // priority가 nil인 경우는 all이 선택된 경우이므로 별도 필터작업이 필요없이 모든 데이터를 뿌려주면 된다.
     if priority == nil {
       self.filteredTasks = self.tasks.value
+      self.updateTableView()
     } else {
       self.tasks.map { tasks in
         // 1) tasks 이벤트가 방출되면, 현재 설정한 필터값에 맞는 task만 필터링 하여
@@ -57,6 +64,7 @@ class TaskListViewController: UIViewController {
       }.subscribe(onNext: { [weak self] tasks in
         // 2) filteredTasks에 필터링한 tasks 값을 저장한다.
         self?.filteredTasks = tasks
+        self?.updateTableView()
         print(tasks)
       }).disposed(by: disposeBag)
     }
@@ -75,15 +83,12 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 10
+    return self.filteredTasks.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//    guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TaskTableViewCell.self), for: indexPath) as? TaskTableViewCell else {
-//      return UITableViewCell()
-//    }
-//
-//    return cell
-    return UITableViewCell()
+    let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: "TaskTableViewCell"), for: indexPath)
+    cell.textLabel?.text = self.filteredTasks[indexPath.row].title
+    return cell
   }
 }

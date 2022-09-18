@@ -20,6 +20,7 @@
 		073CAD5128D71E8A0015E4B7 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 073CAD5028D71E8A0015E4B7 /* RxCocoa */; };
 		073CAD5328D71E8A0015E4B7 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 073CAD5228D71E8A0015E4B7 /* RxRelay */; };
 		073CAD5528D71E8A0015E4B7 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 073CAD5428D71E8A0015E4B7 /* RxSwift */; };
+		073CAD5728D7294D0015E4B7 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073CAD5628D7294D0015E4B7 /* PhotoCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		073CAD3E28D715160015E4B7 /* CameraFilterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraFilterUITests.swift; sourceTree = "<group>"; };
 		073CAD4028D715160015E4B7 /* CameraFilterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraFilterUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		073CAD4D28D7169A0015E4B7 /* PhotoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewController.swift; sourceTree = "<group>"; };
+		073CAD5628D7294D0015E4B7 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				073CAD1F28D715140015E4B7 /* SceneDelegate.swift */,
 				073CAD2128D715140015E4B7 /* ViewController.swift */,
 				073CAD4D28D7169A0015E4B7 /* PhotoCollectionViewController.swift */,
+				073CAD5628D7294D0015E4B7 /* PhotoCollectionViewCell.swift */,
 				073CAD2328D715140015E4B7 /* Main.storyboard */,
 				073CAD2628D715160015E4B7 /* Assets.xcassets */,
 				073CAD2828D715160015E4B7 /* LaunchScreen.storyboard */,
@@ -276,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				073CAD2228D715140015E4B7 /* ViewController.swift in Sources */,
+				073CAD5728D7294D0015E4B7 /* PhotoCollectionViewCell.swift in Sources */,
 				073CAD1E28D715140015E4B7 /* AppDelegate.swift in Sources */,
 				073CAD2028D715140015E4B7 /* SceneDelegate.swift in Sources */,
 				073CAD4E28D7169A0015E4B7 /* PhotoCollectionViewController.swift in Sources */,

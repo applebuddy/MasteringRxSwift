@@ -14,8 +14,9 @@ class TaskListViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   
   // 저장된 Task의 상태를 저장하는데 BehaviorRelay를 사용할 수 있다.
-  // 기존 유사한 기능을 담당하는 Variable이 있었으나, 현재는 Deprecated되어 사용 못하는 듯 하다. (22년 9월 19일 기준)
+  // * 기존 유사한 기능을 담당하는 Variable이 있었으나, 현재는 Deprecated되어 사용 못하는 듯 하다. (22년 9월 19일 기준)
   // -> Udemy 강의에서도 "'Variable' is planned for future deprecation. please consider 'BehaviorRelay' as a replacement. ..... 문구를 다루고 있음"
+  // * BehaviorRelay 사용을 위해서 RxCocoa를 import 해주어야 합니다.
   private var tasks = BehaviorRelay<[Task]>(value: [])
   private let disposeBag = DisposeBag()
   
@@ -33,8 +34,12 @@ class TaskListViewController: UIViewController {
     addViewController.taskSubjectObservable.subscribe(onNext: { [weak self] task in
       guard let self = self else { return }
       // taskSubject 이벤트를 구독하여 taskSubject 이벤트가 발생할때 Task 모델 이벤트를 받아 처리할 수 있다.
-      print(task)
-      self.tasks.accept(self.tasks.value + [task])
+      let priority = Priority(rawValue: self.prioritySegmentedControl.selectedSegmentIndex - 1)
+      var existingTasks = self.tasks.value
+      existingTasks.append(task)
+      self.tasks.accept(existingTasks)
+      // or
+      // self.tasks.accept(self.tasks.value + [task])
     }).disposed(by: disposeBag)
   }
 }

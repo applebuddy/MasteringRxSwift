@@ -2,6 +2,35 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+// MARK: 30. Filter Operator
+// 특정 조건을 충족하는 이벤트만 필터링하여 방출할때 사용
+let disposeBag = DisposeBag()
+Observable.of(1, 2, 3, 4, 5, 6, 7)
+  .filter { $0 % 2 == 0 } // 짝수 값만 방출되도록 필터링
+  .subscribe { value in
+    print(value) // 2, 4, 6, completed 이벤트가 방출
+  }
+  .disposed(by: disposeBag)
+
+// MARK: 29. Element At Operator
+// based on 0 인덱스로 N번째 이벤트를 방출할때 사용한다.
+/*
+let strikes = PublishSubject<String>()
+let disposeBag = DisposeBag()
+
+strikes.element(at: 2)
+  .subscribe(onNext: { value in
+    print("You are out!, value : \(value)")
+  }).disposed(by: disposeBag)
+
+strikes.onNext("X") // 0번째 element
+strikes.onNext("X") // 1번째 element
+strikes.onNext("O") // 2번째 element -> 이벤트 발생
+ */
+
+// MARK: - Section 5. Filtering Operators
+// MARK: 28. Ignore Operator
+/*
 // 초기값을 갖지않는 PublishSubject, strikes
 let strikes = PublishSubject<String>()
 let disposeBag = DisposeBag()
@@ -18,10 +47,7 @@ strikes.onNext("A") // ignored
 strikes.onNext("B") // ignored
 strikes.onNext("C") // ignored
 strikes.onCompleted() // called : [Subscription is called]
-
-// MARK: - Section 5. Filtering Operators
-// MARK: 28. Ignore Operator
-
+*/
 
 // MARK: Section 4. Implementing Photo Filter App Using RxSwift
 // MARK: - 18. What we wiill be building?

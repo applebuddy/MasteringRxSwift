@@ -2,6 +2,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+// MARK: Section 4. Implementing Photo Filter App Using RxSwift
+// MARK: - 18. What we wiill be building?
+
+// MARK: Section 3
 // MARK: - 17. BehaviorRelay
 // * BehaviorReplay를 사용하기 위해서는 RxCocoa 라이브러리가 필요합니다.
 // BehaviorRelay의 value 프로퍼티는 read-only 이므로 accept 메서드를 통해 값을 설정 할 수 있다.

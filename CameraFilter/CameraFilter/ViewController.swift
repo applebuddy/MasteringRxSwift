@@ -39,11 +39,22 @@ class ViewController: UIViewController {
     guard let sourceImage = self.photoImageView.image else {
       return
     }
+    
+    // observable way
+    FilterService().applyFilter(to: sourceImage)
+      .subscribe(onNext: { [weak self] filteredImage in
+        DispatchQueue.main.async {
+          self?.photoImageView.image = filteredImage
+        }
+      }).disposed(by: disposeBag)
+    // non-observable way
+    /*
     FilterService().applyFilter(to: sourceImage) { filteredImage in
       DispatchQueue.main.async {
         self.photoImageView.image = filteredImage
       }
     }
+     */
   }
   
   private func updateUI(with image: UIImage) {

@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import CoreImage
+import RxSwift
 
 class FilterService {
   // CI : CoreImage
@@ -17,8 +18,19 @@ class FilterService {
     self.context = CIContext()
   }
   
+  // Observable way
+  func applyFilter(to inputImage: UIImage) -> Observable<UIImage> {
+    return Observable<UIImage>.create { observer in
+      self.applyFilter(to: inputImage) { filteredImage in
+        observer.onNext(filteredImage)
+      }
+      
+      return Disposables.create()
+    }
+  }
+  
   /// 선택한 사진에 필터효과를 입힌 후 결과 이미지를 completion Handler로 반환하는 메서드
-  func applyFilter(to inputImage: UIImage, completion: @escaping((UIImage) -> Void)) {
+  private func applyFilter(to inputImage: UIImage, completion: @escaping((UIImage) -> Void)) {
     let filter = CIFilter(name: "CICMYKHalftone")!
     filter.setValue(5.0, forKey: kCIInputWidthKey)
     

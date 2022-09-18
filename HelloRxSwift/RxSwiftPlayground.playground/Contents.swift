@@ -2,14 +2,36 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+// 초기값을 갖지않는 PublishSubject, strikes
+let strikes = PublishSubject<String>()
+let disposeBag = DisposeBag()
+
+strikes
+  .ignoreElements()
+  .subscribe { _ in
+    // 구독을 해도 ignoreElements() Operator를 사용하여 이벤트가 방출 되지 않고, onCompleted 될 때만 호출된다.
+    print("[Subscription is called]")
+  }
+  .disposed(by: disposeBag)
+
+strikes.onNext("A") // ignored
+strikes.onNext("B") // ignored
+strikes.onNext("C") // ignored
+strikes.onCompleted() // called : [Subscription is called]
+
+// MARK: - Section 5. Filtering Operators
+// MARK: 28. Ignore Operator
+
+
 // MARK: Section 4. Implementing Photo Filter App Using RxSwift
 // MARK: - 18. What we wiill be building?
+// ...
 
 // MARK: Section 3
 // MARK: - 17. BehaviorRelay
 // * BehaviorReplay를 사용하기 위해서는 RxCocoa 라이브러리가 필요합니다.
 // BehaviorRelay의 value 프로퍼티는 read-only 이므로 accept 메서드를 통해 값을 설정 할 수 있다.
-
+/*
 let disposeBag = DisposeBag()
 let relay = BehaviorRelay(value: "Initial Value")
 
@@ -35,6 +57,7 @@ relay2.asObservable()
   .subscribe {
     print($0)
   }
+ */
 
 // MARK: - 15. ReplaySubject
 // ReplaySubject는 bufferSize를 갖습니다.

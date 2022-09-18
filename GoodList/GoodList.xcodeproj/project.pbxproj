@@ -20,6 +20,7 @@
 		072E314F28D7763700572534 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 072E314E28D7763700572534 /* RxRelay */; };
 		072E315128D7763700572534 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 072E315028D7763700572534 /* RxSwift */; };
 		072E315328D7771E00572534 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072E315228D7771E00572534 /* TaskListViewController.swift */; };
+		072E315528D77DBC00572534 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072E315428D77DBC00572534 /* AddTaskViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		072E313C28D775B300572534 /* GoodListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodListUITests.swift; sourceTree = "<group>"; };
 		072E313E28D775B300572534 /* GoodListUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodListUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		072E315228D7771E00572534 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
+		072E315428D77DBC00572534 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				072E311D28D775B100572534 /* SceneDelegate.swift */,
 				072E311F28D775B100572534 /* ViewController.swift */,
 				072E315228D7771E00572534 /* TaskListViewController.swift */,
+				072E315428D77DBC00572534 /* AddTaskViewController.swift */,
 				072E312128D775B100572534 /* Main.storyboard */,
 				072E312428D775B300572534 /* Assets.xcassets */,
 				072E312628D775B300572534 /* LaunchScreen.storyboard */,
@@ -279,6 +282,7 @@
 				072E315328D7771E00572534 /* TaskListViewController.swift in Sources */,
 				072E311C28D775B100572534 /* AppDelegate.swift in Sources */,
 				072E311E28D775B100572534 /* SceneDelegate.swift in Sources */,
+				072E315528D77DBC00572534 /* AddTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

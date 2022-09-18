@@ -1,9 +1,6 @@
 //
 //  ViewController.swift
 //  CameraFilter
-//
-//  Created by MinKyeongTae on 2022/09/18.
-//
 
 import UIKit
 import RxSwift
@@ -18,4 +15,3 @@ class ViewController: UIViewController {
     self.navigationController?.navigationBar.prefersLargeTitles = true
   }
 }
-

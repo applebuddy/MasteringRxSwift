@@ -2,8 +2,51 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+// MARK: 33. SkipUntil Operator
+// skipUntil Operator는 trigger subject가 trigger하기 전까지 이벤트를 방출하지 않고 skip한다.
+let disposeBag = DisposeBag()
+let subject = PublishSubject<String>()
+let trigger = PublishSubject<String>()
+subject.skip(until: trigger)
+  .subscribe(onNext: {
+    print($0)
+  })
+  .disposed(by: disposeBag)
+// trigger subject가 이벤트 방출하기 전까지 subject subject의 이벤트는 skip된다.
+// trigger subject가 이벤트를 방출하기 전까지 subject에서 값은 방출되지 않고 skip된다.
+subject.onNext("A")
+subject.onNext("B")
+
+// trigger subject가 이벤트를 방출한 이후 subject에서 이벤트가 방출된다.
+trigger.onNext("X")
+subject.onNext("C")
+
+// MARK: 32. SkipWhile Operator
+// 최초 조건 충족이 되지 않을때까지 이벤트를 Skip할 수 있도록 해주는 Operator, skipWhile 조건에 해당되지 않는 시점부터 이벤트가 방출된다.
+/*
+let disposeBag = DisposeBag()
+Observable.of(2, 2, 3, 4, 4, 4)
+  .skip(while: { $0 % 2 == 0 }) // 홀수가 나오기 전까지 짝수인 값들을 skip된다.
+  .subscribe(onNext: { value in
+    print(value) // 초기 2, 2는 짝수이므로 skip된다. 이후 3이라는 홀수가 나오면서 이후 값은 방출된다.
+  })
+  .disposed(by: disposeBag)
+ */
+
+// MARK: 31. Skip Operator
+/*
+let disposeBag = DisposeBag()
+Observable.of("A", "B", "C", "D", "E", "F")
+  .skip(3) // 3번째 값 까지는 skip한다.
+  .subscribe(onNext: {
+    print($0) // A, B, C는 skip되고 이후 D, E, F 값이 방출된다.
+  })
+  .disposed(by: disposeBag)
+ */
+
 // MARK: 30. Filter Operator
 // 특정 조건을 충족하는 이벤트만 필터링하여 방출할때 사용
+/*
 let disposeBag = DisposeBag()
 Observable.of(1, 2, 3, 4, 5, 6, 7)
   .filter { $0 % 2 == 0 } // 짝수 값만 방출되도록 필터링
@@ -11,6 +54,7 @@ Observable.of(1, 2, 3, 4, 5, 6, 7)
     print(value) // 2, 4, 6, completed 이벤트가 방출
   }
   .disposed(by: disposeBag)
+ */
 
 // MARK: 29. Element At Operator
 // based on 0 인덱스로 N번째 이벤트를 방출할때 사용한다.

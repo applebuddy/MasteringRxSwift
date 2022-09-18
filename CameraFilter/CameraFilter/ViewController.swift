@@ -9,6 +9,7 @@ import RxCocoa
 class ViewController: UIViewController {
   
   @IBOutlet weak var photoImageView: UIImageView!
+  @IBOutlet weak var applyFilterButton: UIButton!
   
   private let disposeBag = DisposeBag()
 
@@ -28,7 +29,25 @@ class ViewController: UIViewController {
     // subscribe 함으로써 가장 최근에 선택한 image 정보를 감지할 수 있습니다.
     // PublishSubject를 활용하여 별도의 delegate를 구현하지 않고, PhotoCollectionViewController에서 선택한 이미지에 대한 정보를 받아 페이지에 띄울 수 있습니다.
     photoCollectionViewController.selectedPhoto.subscribe(onNext: { [weak self] photo in
-      self?.photoImageView.image = photo
+      DispatchQueue.main.async {
+        self?.updateUI(with: photo)
+      }
     }).disposed(by: disposeBag)
+  }
+  
+  @IBAction func applyFilterButtonPressed() {
+    guard let sourceImage = self.photoImageView.image else {
+      return
+    }
+    FilterService().applyFilter(to: sourceImage) { filteredImage in
+      DispatchQueue.main.async {
+        self.photoImageView.image = filteredImage
+      }
+    }
+  }
+  
+  private func updateUI(with image: UIImage) {
+    self.photoImageView.image = image
+    self.applyFilterButton.isHidden = false
   }
 }

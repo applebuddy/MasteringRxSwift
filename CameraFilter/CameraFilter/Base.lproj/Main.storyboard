@@ -18,15 +18,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S8p-Tn-fHm">
-                                <rect key="frame" x="0.0" y="88" width="415" height="708"/>
+                                <rect key="frame" x="0.0" y="88" width="415" height="537.5"/>
                             </imageView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mll-c1-KA9">
-                                <rect key="frame" x="145.5" y="816" width="124.5" height="31"/>
+                                <rect key="frame" x="145.5" y="645.5" width="124.5" height="31"/>
                                 <color key="backgroundColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Apply Filter">
                                     <color key="baseForegroundColor" red="0.92560279190000005" green="0.92560279190000005" blue="0.92560279190000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="applyFilterButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="CuW-mk-rJP"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -37,7 +40,7 @@
                             <constraint firstItem="S8p-Tn-fHm" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" constant="1" id="Mdt-nj-Baa"/>
                             <constraint firstItem="S8p-Tn-fHm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="bti-NO-On3"/>
                             <constraint firstItem="S8p-Tn-fHm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="nEj-EO-oog"/>
-                            <constraint firstItem="S8p-Tn-fHm" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.79" id="tXH-R7-oKN"/>
+                            <constraint firstItem="S8p-Tn-fHm" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.6" id="tXH-R7-oKN"/>
                             <constraint firstItem="Mll-c1-KA9" firstAttribute="width" secondItem="S8p-Tn-fHm" secondAttribute="width" multiplier="0.3" id="zBn-fn-ag3"/>
                         </constraints>
                     </view>
@@ -49,6 +52,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="applyFilterButton" destination="Mll-c1-KA9" id="czF-rf-I5M"/>
                         <outlet property="photoImageView" destination="S8p-Tn-fHm" id="HjA-u8-bky"/>
                     </connections>
                 </viewController>

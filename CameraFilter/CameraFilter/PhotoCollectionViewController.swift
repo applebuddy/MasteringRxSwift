@@ -7,8 +7,15 @@
 
 import UIKit
 import Photos
+import RxSwift
 
 class PhotoCollectionViewController: UICollectionViewController {
+  // review  : Subject는 Observable 이면서 동시에 Observer입니다. PublishSubject는 BehaviorSubject와 달리 초기값을 갖고 있지 않습니다.
+  // selectedPhotoSubjet는 가장 최근 선택 된 UIImage를 갖게 될 것 입니다.
+  private let selectedPhotoSubject = PublishSubject<UIImage>()
+  var selectedPhoto: Observable<UIImage> {
+    return selectedPhotoSubject.asObservable()
+  }
   
   private var images = [PHAsset]()
 
@@ -38,6 +45,21 @@ class PhotoCollectionViewController: UICollectionViewController {
       }
     }
     return cell
+  }
+  
+  override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let selectedAsset = self.images[indexPath.row]
+    PHImageManager.default().requestImage(for: selectedAsset, targetSize: CGSize(width: 300, height: 300), contentMode: .aspectFit, options: nil) { [weak self] image, info in
+      guard let info = info else { return }
+      // degraded image인지를 체크하고, degraded image가 아니면, selecedPhotoSubject에 해당 값을 설정한다.
+      guard let isDegradedImage = info["PHImageResultIsDegradedKey"] as? Bool else { return }
+      if !isDegradedImage {
+        if let image = image {
+          self?.selectedPhotoSubject.onNext(image)
+          self?.dismiss(animated: true)
+        }
+      }
+    }
   }
   
   private func populatePhotos() {

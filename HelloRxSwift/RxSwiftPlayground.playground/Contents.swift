@@ -1,8 +1,82 @@
 import UIKit
 import RxSwift
+import RxCocoa
+
+// MARK: 49~50. flatMap, flatMapLatest Operator
+// flatMap은 map 연산자와 유사한 연산자인데 다만 반환타입이 다릅니다.
+// flatMap은 map을 적용한 Observable들을 모두 합쳐서 하나의 Observable로 반환합니다.
+// 따라서 연산작업을 한 후 마지막에 subscribe하여 Reactive 하게 처리를 하고자 할때 유용하다.
+
+// flatMapLatest는 가장 마지막의 latest Observable을 반환한다.
+/*
+let disposeBag = DisposeBag()
+struct Student {
+  var score: BehaviorRelay<Int>
+}
+
+let john = Student(score: BehaviorRelay(value: 75))
+let mary = Student(score: BehaviorRelay(value: 90))
+let student = PublishSubject<Student>()
+let student2 = PublishSubject<Student>()
+
+let map = student // PublishSubject<Student>
+  .asObservable() // Observable<Student>
+  .map { $0.score.asObservable() } // Observable<Observable<Int>> -> map 연산자를 사용하는 경우, 이대로 subscribe 할 경우 정상적으로 값을 구독하여 감지할 수 없다.
+let flatMap = student.asObservable() // Observable<Student>
+  .flatMap { $0.score.asObservable() } // Observable<Int> -> flatMap을 사용하면 Observable<Int>로 변환되어 subscribe 할 시, score 값을 구독 감지할 수 있다.
+// flatMap example)
+/*
+student.asObservable()
+  .flatMap { $0.score.asObservable() }
+  .subscribe(onNext: {
+    print($0)
+  })
+
+student.onNext(john)
+john.score.accept(95)
+
+student.onNext(mary)
+mary.score.accept(85)
+john.score.accept(55)
+*/
+
+// flatMapLatest example)
+/*
+student2.asObservable()
+  .flatMapLatest { $0.score.asObservable() }
+  .subscribe(onNext: {
+    print($0)
+  })
+  .disposed(by: disposeBag)
+
+student2.onNext(john) // john에 대한 이벤트만 방출함
+john.score.accept(100) // -> 가장 최근에 감지한 Observable은 john이므로 이벤트를 방출함
+// flatMapLatest를 사용하면 가장 마지막으로 감지한 Observable의 이벤트만 방출한다.
+student2.onNext(mary) // mary에 대한 이벤트만 방출함
+// 가장 최근에 감지한 Observable은 mary이므로, student2에서 john Observable에 대한 이벤트는 방출하지 않는다.
+john.score.accept(0) // -> student2에서 이벤트 방출하지 않음
+// 가장 최근에 감지한 Observable은 mary이므로 student2로부터 mary의 이벤트는 방출된다.
+mary.score.accept(95) // -> student2에서 이벤트 방출함. mary는 가장 최근에 감지한 Observable이기 때문
+// 이처럼, flatMap과 달리, flatMapLatest는 가장 최근의 Observable에 대한 이벤트만 감지하고 방출할때 사용할 수 있다.
+*/
+*/
+
+// MARK: 48. map Operator
+// 현재 Sequence의 각 element들에 대해서 특정 연산을 한 새로운 Sequence로 변환할때 사용한다.
+/*
+let disposeBag = DisposeBag()
+Observable.of(1, 2, 3, 4, 5)
+  .map { $0 * 2 } // 각각의 값을 2배 연산한 Sequence로 맵핑
+  .subscribe(onNext: {
+    print($0)
+  })
+  .disposed(by: disposeBag)
+ */
+
 
 // MARK: - Section 7. Transforming Operators
 // MARK: 47. To Array Operator
+/*
 let disposeBag = DisposeBag()
 Observable.of(1, 2, 3, 4, 5)
   .toArray() // Single<[Int]>
@@ -17,6 +91,7 @@ Observable.of(1, 2, 3, 4, 5)
   .subscribe(onNext: {
     print($0)
   }).disposed(by: disposeBag)
+ */
 
 // MARK: 36. TakeUntil Operator
 // trigger subject가 trigger하기 전까지 값을 방출한다.

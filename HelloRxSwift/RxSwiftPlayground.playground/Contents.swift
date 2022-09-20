@@ -2,9 +2,31 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+// MARK: 62. merge operator
+// merge operator는 time based diagram 순서에 맞게 합쳐진 상태의 시퀀스를 반환한다. (concat operator처럼 앞 뒤 시퀀스를 차례대로 붙이는것이 아님)
+/*
+let disposeBag = DisposeBag()
+let left = PublishSubject<Int>()
+let right = PublishSubject<Int>()
+// left, right PublishSubject<Int>를 각각 Observable<Int>로 변환(asObservable())하여 of 연산자 인자로 넣었다.
+let source = Observable.of(left.asObservable(), right.asObservable())
+// left, right subject를 merge하여 left, right가 이벤트를 방출하는 시간 순으로 이벤트를 감지할 수 있다.
+let observable = source.merge()
+observable.subscribe(onNext: {
+  print($0)
+}).disposed(by: disposeBag)
+
+// left, right subject가 이벤트를 방출하는 time 순으로 이벤트가 방출된다.
+left.onNext(10)
+left.onNext(20)
+right.onNext(30)
+right.onNext(40)
+left.onNext(50)
+ */
+
 // MARK: 61. concat operator
 // concat(concatenate) operator는 두개의 sequence를 붙여서 하나의 sequence로 반환합니다.
-
+/*
 let disposeBag = DisposeBag()
 let first = Observable.of(1, 2, 3)
 let second = Observable.from([4, 5, 6])
@@ -12,6 +34,7 @@ let observable = Observable.concat([first, second])
 observable.subscribe(onNext: {
   print($0) // 1, 2, 3, 4, 5, 6
 })
+ */
 
 // MARK: - Section 9
 // MARK: 60. startWith operator

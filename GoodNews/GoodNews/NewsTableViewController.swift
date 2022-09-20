@@ -5,7 +5,8 @@
 //  Created by MinKyeongTae on 2022/09/21.
 //
 
-import Foundation
+import RxSwift
+import RxCocoa
 import UIKit
 
 class NewsTableViewController: UITableViewController {

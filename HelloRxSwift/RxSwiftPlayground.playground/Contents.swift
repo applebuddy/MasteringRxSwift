@@ -2,16 +2,24 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+// MARK: - Section 10. Beginning RxCocoa
+// MARK: 67. What is RxCocoa?
+// - RxCocoa는 많은 UIControl, 그 외 SDK 클래스 들에 대한 커스텀 래퍼(wrapper)를 제공한다.
+// - RxCocoa를 통해 기존 UI에 대한 Reactive한 접근이 가능하다. iOS, Apple Watch, Apple TV, macOS 등 다양한 플랫폼을 지원한다.
+// * RxCocoa example project는 weather open api를 활용합니다.
+//   - https://home.openweathermap.org
+
 // MARK: 66. scan operator
 // scan operator는 reduce operator와 친척같은(유사한) 연산자이다.
 // reduce는 마지막 결과 값만 반환하지만, scan은 그 연산 과정 결과도 함께 반환한다.
+/*
 let disposeBag = DisposeBag()
 let source = Observable.of(1, 2, 3, 4, 5)
 source.scan(0, accumulator: +)
   .subscribe(onNext: {
     print($0) // 1, 3, 6, 10, 15 -> 마지막 15만 출력될 reduce와 달리 scan operator는 합 연산 과정이 모두 출력된다.
   }).disposed(by: disposeBag)
-
+*/
 
 // MARK: 65. reduce operator
 // reduce operator는 초기값을 지정하고 Sequence에 대한 연산을 통해 하나의 특정한 값으로 변환한다.

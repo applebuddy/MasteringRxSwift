@@ -17,6 +17,7 @@
 		07866BAB28DA17E0002C6047 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 07866BAA28DA17E0002C6047 /* RxSwift */; };
 		07866BAD28DA1D24002C6047 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07866BAC28DA1D24002C6047 /* Article.swift */; };
 		07866BB128DA1FE2002C6047 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07866BB028DA1FE2002C6047 /* ArticleTableViewCell.swift */; };
+		07866BB428DA2400002C6047 /* URLRequest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07866BB328DA2400002C6047 /* URLRequest+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		07866BA328DA10F3002C6047 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		07866BAC28DA1D24002C6047 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		07866BB028DA1FE2002C6047 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
+		07866BB328DA2400002C6047 /* URLRequest+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		07866B8E28DA0F10002C6047 /* GoodNews */ = {
 			isa = PBXGroup;
 			children = (
+				07866BB228DA23EF002C6047 /* Extensions */,
 				07866BAF28DA1FD7002C6047 /* Cells */,
 				07866BAE28DA1D27002C6047 /* Model */,
 				07866B8F28DA0F10002C6047 /* AppDelegate.swift */,
@@ -91,6 +94,14 @@
 				07866BB028DA1FE2002C6047 /* ArticleTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		07866BB228DA23EF002C6047 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				07866BB328DA2400002C6047 /* URLRequest+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,6 +185,7 @@
 				07866BB128DA1FE2002C6047 /* ArticleTableViewCell.swift in Sources */,
 				07866BAD28DA1D24002C6047 /* Article.swift in Sources */,
 				07866BA428DA10F3002C6047 /* NewsTableViewController.swift in Sources */,
+				07866BB428DA2400002C6047 /* URLRequest+Extensions.swift in Sources */,
 				07866B9428DA0F10002C6047 /* ViewController.swift in Sources */,
 				07866B9028DA0F10002C6047 /* AppDelegate.swift in Sources */,
 			);

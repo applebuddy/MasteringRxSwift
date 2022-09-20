@@ -42,3 +42,23 @@ class NewsTableViewController: UITableViewController {
       }).disposed(by: disposeBag)
   }
 }
+
+extension NewsTableViewController {
+  override func numberOfSections(in tableView: UITableView) -> Int {
+    return 1
+  }
+  
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return self.articles.count
+  }
+  
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ArticleTableViewCell.self), for: indexPath) as? ArticleTableViewCell else {
+      return UITableViewCell()
+    }
+    
+    cell.titleLabel.text = self.articles[indexPath.row].title
+    cell.descriptionLabel.text = self.articles[indexPath.row].description
+    return cell
+  }
+}

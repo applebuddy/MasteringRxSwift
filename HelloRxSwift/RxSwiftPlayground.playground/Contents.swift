@@ -2,6 +2,25 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+// MARK: 64: withLatestFrom operator
+// withLatestFrom을 통해 특정 OBservable 인자에 대한 최신 이벤트값을 받을 수 있다.
+// ex) button이 withLatestFrom 인자로 특정 텍스트필드 Observable을 넣으면, button이 클릭될 때마다 텍스트필드의 최신 값을 감지할 수 있다.
+let disposeBag = DisposeBag()
+let button = PublishSubject<Void>()
+let textField = PublishSubject<String>()
+let observable = button.withLatestFrom(textField)
+let disposable = observable.subscribe(onNext: {
+  print($0)
+})
+
+textField.onNext("Sw")
+textField.onNext("Swif")
+textField.onNext("Swift") // 버튼이 클릭되기 전까지는 구독한 observable의 이벤트가 방출되지 않는다.
+
+// button subject가 Void 이벤트를 방출할때마다(클릭할때마다) 구독한 observable을 통해 클릭 직후의 텍스트필드 최신 이벤트를 받을 수 있다.
+button.onNext(()) // -> Swift
+button.onNext(()) // -> Swift
+
 // MARK: 63. combineLatest operator
 // combineLatest operator는 다수 Observable 각각의 최신 이벤트를 방출한다.
 /*

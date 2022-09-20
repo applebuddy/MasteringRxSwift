@@ -2,8 +2,20 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+// MARK: 66. scan operator
+// scan operator는 reduce operator와 친척같은(유사한) 연산자이다.
+// reduce는 마지막 결과 값만 반환하지만, scan은 그 연산 과정 결과도 함께 반환한다.
+let disposeBag = DisposeBag()
+let source = Observable.of(1, 2, 3, 4, 5)
+source.scan(0, accumulator: +)
+  .subscribe(onNext: {
+    print($0) // 1, 3, 6, 10, 15 -> 마지막 15만 출력될 reduce와 달리 scan operator는 합 연산 과정이 모두 출력된다.
+  }).disposed(by: disposeBag)
+
+
 // MARK: 65. reduce operator
 // reduce operator는 초기값을 지정하고 Sequence에 대한 연산을 통해 하나의 특정한 값으로 변환한다.
+/*
 let disposeBag = DisposeBag()
 let source = Observable.of(1, 2, 3)
 source.reduce(0, accumulator: +) // 1 + 2 + 3 == 6
@@ -16,6 +28,7 @@ source.reduce(0, accumulator: { summary, value in
 }).subscribe(onNext: {
   print($0) // 6
 }).disposed(by: disposeBag)
+ */
 
 
 // MARK: 64: withLatestFrom operator

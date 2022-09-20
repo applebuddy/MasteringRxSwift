@@ -2,9 +2,26 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+// MARK: 65. reduce operator
+// reduce operator는 초기값을 지정하고 Sequence에 대한 연산을 통해 하나의 특정한 값으로 변환한다.
+let disposeBag = DisposeBag()
+let source = Observable.of(1, 2, 3)
+source.reduce(0, accumulator: +) // 1 + 2 + 3 == 6
+  .subscribe(onNext: {
+    print($0) // 6
+  }).disposed(by: disposeBag)
+
+source.reduce(0, accumulator: { summary, value in
+  return summary + value // accumulator 클로져를 통해 커스텀하게 연산이 가능하다. 위와 동일하게 모든 value의 합을 반환하는 연산이다.
+}).subscribe(onNext: {
+  print($0) // 6
+}).disposed(by: disposeBag)
+
+
 // MARK: 64: withLatestFrom operator
 // withLatestFrom을 통해 특정 OBservable 인자에 대한 최신 이벤트값을 받을 수 있다.
 // ex) button이 withLatestFrom 인자로 특정 텍스트필드 Observable을 넣으면, button이 클릭될 때마다 텍스트필드의 최신 값을 감지할 수 있다.
+/*
 let disposeBag = DisposeBag()
 let button = PublishSubject<Void>()
 let textField = PublishSubject<String>()
@@ -20,6 +37,7 @@ textField.onNext("Swift") // 버튼이 클릭되기 전까지는 구독한 obser
 // button subject가 Void 이벤트를 방출할때마다(클릭할때마다) 구독한 observable을 통해 클릭 직후의 텍스트필드 최신 이벤트를 받을 수 있다.
 button.onNext(()) // -> Swift
 button.onNext(()) // -> Swift
+ */
 
 // MARK: 63. combineLatest operator
 // combineLatest operator는 다수 Observable 각각의 최신 이벤트를 방출한다.

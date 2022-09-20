@@ -2,6 +2,30 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+// MARK: 61. concat operator
+// concat(concatenate) operator는 두개의 sequence를 붙여서 하나의 sequence로 반환합니다.
+
+let disposeBag = DisposeBag()
+let first = Observable.of(1, 2, 3)
+let second = Observable.from([4, 5, 6])
+let observable = Observable.concat([first, second])
+observable.subscribe(onNext: {
+  print($0) // 1, 2, 3, 4, 5, 6
+})
+
+// MARK: - Section 9
+// MARK: 60. startWith operator
+// startWith operator는 시퀀스 Observable을 특정 값으로 시작하는 시퀀스 Observable로 반환합니다.
+/*
+let disposeBag = DisposeBag()
+let numbers = Observable.from([2, 3, 4])
+
+let observable = numbers.startWith(100) // 100부터 시작하는 Observable<Int>이 된다.
+observable.subscribe(onNext: {
+  print($0) // 100, 2, 3, 4
+}).disposed(by: disposeBag)
+*/
+
 // MARK: 49~50. flatMap, flatMapLatest Operator
 // flatMap은 map 연산자와 유사한 연산자인데 다만 반환타입이 다릅니다.
 // flatMap은 map을 적용한 Observable들을 모두 합쳐서 하나의 Observable로 반환합니다.

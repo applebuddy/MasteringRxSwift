@@ -2,6 +2,28 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+// MARK: 63. combineLatest operator
+// combineLatest operator는 다수 Observable 각각의 최신 이벤트를 방출한다.
+/*
+let disposeBag = DisposeBag()
+let left = PublishSubject<Int>()
+let right = PublishSubject<Int>()
+let observable = Observable.combineLatest(left, right, resultSelector: { lastLeft, lastRight in
+  "left : \(lastLeft), right : \(lastRight)"
+})
+
+let disposable = observable.subscribe(onNext: { value in
+  print(value)
+})
+// combineLatest는 Observable의 최신상태 이벤트를 방출할때 사용한다. 텍스트필드 유효성 검사 등에 사용할 수 있다.
+left.onNext(1)
+right.onNext(3) // left : 1, right : 3
+left.onNext(2) // left : 2, right : 3
+right.onNext(100) // left : 2, right : 100
+right.onNext(200) // left : 2, right : 200
+left.onNext(300) // left : 300, right : 200
+ */
+
 // MARK: 62. merge operator
 // merge operator는 time based diagram 순서에 맞게 합쳐진 상태의 시퀀스를 반환한다. (concat operator처럼 앞 뒤 시퀀스를 차례대로 붙이는것이 아님)
 /*

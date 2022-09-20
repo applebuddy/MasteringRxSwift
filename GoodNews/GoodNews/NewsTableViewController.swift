@@ -10,6 +10,10 @@ import RxCocoa
 import UIKit
 
 class NewsTableViewController: UITableViewController {
+  
+  private let disposeBag = DisposeBag()
+  private var articles = [Article]()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -26,13 +30,15 @@ class NewsTableViewController: UITableViewController {
         let request = URLRequest(url: url)
         return URLSession.shared.rx.data(request: request) // -> Observable<Data>
       }.map { data -> [Article]? in
-        return try? JSONDecoder().decode(ArticleList.self, from: data!.articles)
+        return try? JSONDecoder().decode(ArticlesList.self, from: data).articles
       }.subscribe(onNext: { [weak self] articles in
-        if let articles = articles {
-          DispatchQueue.main.async {
-            self?.tableView.reloadData()
-          }
+        guard let articles = articles else {
+          return
         }
-      })
+        DispatchQueue.main.async {
+          self?.articles = articles
+          self?.tableView.reloadData()
+        }
+      }).disposed(by: disposeBag)
   }
 }

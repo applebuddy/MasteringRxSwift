@@ -1,5 +1,6 @@
 # MasteringRxSwift
 Study for Udemy Lecture, MasteringRxSwift
+* lecture url (udemy) : https://www.udemy.com/course/mastering-rxswift-in-ios/learn/lecture/13577704#overview
 
 <div>
 

@@ -104,6 +104,12 @@ class ViewController: UIViewController {
       .drive(self.humidityLabel.rx.text)
       .disposed(by: disposeBag)
      */
+    
+    // 80. Disposing with RxCocoa
+    // 클로져 내 캡쳐리스트는 어떨때 사용해야할까?
+    // 1) nothing : viewController, 싱글턴 내부 등 클로져 내부가 아닌 일반적인 케이스
+    // 2) unowned : 모든 viewController들 의 클로져 실행 된 이후의 케이스 (nil이 되면 앱 크래시를 유발하므로 주의해서 사용)
+    // 3) weak : 그 외 모든 케이스
   }
   
   private func displayWeather(_ weather: Weather?) {

@@ -2,6 +2,11 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+// MARK: - section 12. MVVM with RxSwift
+// MVC 패턴 : MVC, Model, View, Controller로 구성되는 디자인패턴, 가장 구현 난이도가 쉽지만 Massive View Controller, bad testability의 문제점이 있다.
+// MVVM 패턴 : View, ViewModel(View와 바인딩되는 데이터), Model로 구성되는 디자인패턴
+// - View <-> ViewModel <-> Model
+// - MVC의 Massive ViewController로 인한 Testability 문제점을 해소할 수 있는 디자인패턴 기법 중 하나.
 // MARK: - Section 11. Error Handling
 // MARK: 80. MAnaging Errors
 // 1) catchAndReturn : 에러 발생 시 지정된 특정 값을 전달

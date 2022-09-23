@@ -77,6 +77,7 @@ class ViewController: UIViewController {
     // RxCcooa, bindTo를 통해 Observable과 UI를 바인딩하여 Observable 이벤트 발생 마다 UI를 업데이트 시킬 수 있습니다.
     // 또 다른 UI 바인딩 방법으로 driver가 있습니다. driver를 다음시간에 사용해봐요.
     // 1) observe, bind 사용 예시
+    /*
     let searchObservable = URLRequest.load(resource: resource)
       .observe(on: MainScheduler.instance) // UI 업데이트는 Main 스레드에서 동작해야해요.
       .catchAndReturn(WeatherResult.empty) // 에러 발생시 빈 데이더를 전달
@@ -88,23 +89,27 @@ class ViewController: UIViewController {
      searchObservable.map { "\($0.main.humidity) 🍉" }
        .bind(to: self.humidityLabel.rx.text) // searchObservable에서 humidiy 값이 방출 될때마다 바인딩 된 humidityLabel 텍스트가 업데이트 됩니다.
        .disposed(by: disposeBag)
+     */
     
     // 2) driver 사용 예시
     // control property, driver란 무엇인가?
     // rx.controlEvent : UI의 다양한 이벤트를 구독하여 감지할 수 있다. 특정 UI 이벤트가 발생할때마다 이벤트가 trigger된다.
     // driver : driver는 항상 Main thraed에서 동작을 하기때문에 Main thread에서만 동작해야하는 UI를 감지할때 사용할 수 있습니다.
     // Observable을 asDriver로 Driver 변환이 가능하며, bind 대신 drive로 UI를 바인딩할 수 있습니다.
-    /*
+    
     let searchObservable = URLRequest.load(resource: resource)
-      .asDriver(onErrorJustReturn: WeatherResult.empty) // 에러 발생 시, WeatherResult.empty를 전달합니다.
+      .retry(3) // retry three times, 재시도를 통해 이벤트 정상 처리가 가능한 경우, 다시 이벤트를 감지할 수 있다.
+      .catch { error in // catch는 에러를 처리할때 사용할 수 있다.
+        print(error.localizedDescription) // ex) httpRequestFailed 관련 에러
+        return Observable.just(WeatherResult.empty)
+      }.asDriver(onErrorJustReturn: WeatherResult.empty) // 에러 발생 시, WeatherResult.empty를 전달합니다.
     searchObservable.map { "\($0.main.temp) 𝐅"}
       .drive(self.temperatureLabel.rx.text)
       .disposed(by: disposeBag)
     searchObservable.map { "\($0.main.humidity) ⺢"}
       .drive(self.humidityLabel.rx.text)
       .disposed(by: disposeBag)
-     */
-    
+  
     // 80. Disposing with RxCocoa
     // 클로져 내 캡쳐리스트는 어떨때 사용해야할까?
     // 1) nothing : viewController, 싱글턴 내부 등 클로져 내부가 아닌 일반적인 케이스

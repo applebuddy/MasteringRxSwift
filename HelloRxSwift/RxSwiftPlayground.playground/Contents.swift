@@ -2,6 +2,11 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+// MARK: - Section 11. Error Handling
+// MARK: 80. MAnaging Errors
+// 1) catchAndReturn : 에러 발생 시 지정된 특정 값을 전달
+// 2) retry : 에러 발생시 재시도
+
 // MARK: - Section 10. Beginning RxCocoa
 // MARK: 67. What is RxCocoa?
 // - RxCocoa는 많은 UIControl, 그 외 SDK 클래스 들에 대한 커스텀 래퍼(wrapper)를 제공한다.

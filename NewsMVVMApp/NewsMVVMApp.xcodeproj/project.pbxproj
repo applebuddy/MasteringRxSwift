@@ -16,6 +16,7 @@
 		075C33E028DE4FFD0084AD4E /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 075C33DF28DE4FFD0084AD4E /* RxCocoa */; };
 		075C33E228DE4FFD0084AD4E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 075C33E128DE4FFD0084AD4E /* RxSwift */; };
 		075C33E528DE51030084AD4E /* URLRequest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075C33E428DE51030084AD4E /* URLRequest+Extensions.swift */; };
+		075C33E828DE53B70084AD4E /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075C33E728DE53B70084AD4E /* ArticleViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		075C33D928DE48F10084AD4E /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		075C33DC28DE4EE00084AD4E /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		075C33E428DE51030084AD4E /* URLRequest+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Extensions.swift"; sourceTree = "<group>"; };
+		075C33E728DE53B70084AD4E /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		075C33C328DE48280084AD4E /* NewsMVVMApp */ = {
 			isa = PBXGroup;
 			children = (
+				075C33E628DE53A20084AD4E /* ViewModels */,
 				075C33E328DE50F60084AD4E /* Extensions */,
 				075C33DB28DE4ED10084AD4E /* Models */,
 				075C33D828DE484D0084AD4E /* Controllers */,
@@ -96,6 +99,14 @@
 				075C33E428DE51030084AD4E /* URLRequest+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		075C33E628DE53A20084AD4E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				075C33E728DE53B70084AD4E /* ArticleViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +190,7 @@
 				075C33C528DE48280084AD4E /* AppDelegate.swift in Sources */,
 				075C33E528DE51030084AD4E /* URLRequest+Extensions.swift in Sources */,
 				075C33DA28DE48F10084AD4E /* NewsTableViewController.swift in Sources */,
+				075C33E828DE53B70084AD4E /* ArticleViewModel.swift in Sources */,
 				075C33DD28DE4EE00084AD4E /* Article.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

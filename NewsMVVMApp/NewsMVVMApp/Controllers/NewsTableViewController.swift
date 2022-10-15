@@ -8,11 +8,13 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Combine
 
 class NewsTableViewController: UITableViewController {
   
   private let disposeBag = DisposeBag()
   private var articlesListViewModel: ArticleListViewModel!
+  private var cancellables = Set<AnyCancellable>()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -52,12 +54,50 @@ class NewsTableViewController: UITableViewController {
     // ViewModel의 Observable 프로퍼티와 View를 바인딩하여 UI를 업데이트 시킬 수 있다.
     // asDriver, drive를 활용하면 onObserve 등으로 메인스레드 지정코드를 작성할 필요없이 보다 간결하게 코드를 작성 가능하다. drive는 기본적으로 메인스레드에서 동작하므로 UI 바인딩에 사용하면 유용하다.
     let articleVM = self.articlesListViewModel.articleAt(indexPath.row)
+    // 1) driver 사용했을때
+    /*
     articleVM.title.asDriver(onErrorJustReturn: "")
       .drive(cell.titleLabel.rx.text)
       .disposed(by: disposeBag)
     articleVM.description.asDriver(onErrorJustReturn: "")
       .drive(cell.descriptionLabel.rx.text)
       .disposed(by: disposeBag)
+     */
+
+    // 2) bind 사용했을때
+    /*
+    articleVM.title
+      .observe(on: MainScheduler.instance)
+      .bind(to: cell.titleLabel.rx.text)
+      .disposed(by: disposeBag)
+    articleVM.description
+      .observe(on: MainScheduler.instance)
+      .bind(to: cell.descriptionLabel.rx.text)
+      .disposed(by: disposeBag)
+     */
+    
+    // 3) Combine sink 사용했을때
+    /*
+    articleVM.title
+      .sink { [weak self] text in
+        cell.titleLabel.text = text
+      }
+      .store(in: &cancellables)
+    articleVM.description
+      .sink { [weak self] text in
+        cell.descriptionLabel.text = text
+      }
+      .store(in: &cancellables)
+     */
+    
+    // 4) Combine assign으로 바인딩 했을때
+    articleVM.title
+      .assign(to: \.text, on: cell.titleLabel)
+      .store(in: &cancellables)
+    
+    articleVM.description
+      .assign(to: \.text, on: cell.descriptionLabel)
+      .store(in: &cancellables)
     
     return cell
   }

@@ -145,7 +145,6 @@ observable.subscribe(onNext: {
 // 따라서 연산작업을 한 후 마지막에 subscribe하여 Reactive 하게 처리를 하고자 할때 유용하다.
 
 // flatMapLatest는 가장 마지막의 latest Observable을 반환한다.
-/*
 let disposeBag = DisposeBag()
 struct Student {
   var score: BehaviorRelay<Int>
@@ -195,7 +194,6 @@ john.score.accept(0) // -> student2에서 이벤트 방출하지 않음
 // 가장 최근에 감지한 Observable은 mary이므로 student2로부터 mary의 이벤트는 방출된다.
 mary.score.accept(95) // -> student2에서 이벤트 방출함. mary는 가장 최근에 감지한 Observable이기 때문
 // 이처럼, flatMap과 달리, flatMapLatest는 가장 최근의 Observable에 대한 이벤트만 감지하고 방출할때 사용할 수 있다.
-*/
 */
 
 // MARK: 48. map Operator

@@ -10,8 +10,6 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-
-
 class HomeViewModel {
   
   public enum HomeError {
@@ -27,7 +25,7 @@ class HomeViewModel {
   
   private let disposable = DisposeBag()
 
-  public func requestData(){
+  public func requestData() {
     
     self.loading.onNext(true)
     APIManager.requestData(url: "dcd86ebedb5e519fd7b09b79dd4e4558/raw/b7505a54339f965413f5d9feb05b67fb7d0e464e/MvvmExampleApi.json", method: .get, parameters: nil, completion: { (result) in

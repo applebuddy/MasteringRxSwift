@@ -1,34 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--HomeVC-->
+        <!--Home View Controller-->
         <scene sceneID="dEb-bJ-HXp">
             <objects>
-                <viewController storyboardIdentifier="home" id="3sy-G2-wrp" customClass="HomeVC" customModule="MVVMRx" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="home" id="3sy-G2-wrp" customClass="HomeViewController" customModule="MVVMRx" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bcg-xB-32G">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="U7y-z4-jvz">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Albums" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="BUa-Ef-2SB">
-                                <rect key="frame" x="8" y="52" width="53" height="19"/>
+                                <rect key="frame" x="8" y="32" width="276" height="19"/>
                                 <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YsF-3t-dXM">
-                                <rect key="frame" x="0.0" y="87" width="375" height="170"/>
+                                <rect key="frame" x="0.0" y="67" width="600" height="170"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="NHO-Lo-elO"/>
                                 </constraints>
@@ -37,18 +33,19 @@
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tracks" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Zq6-sS-xkM">
-                                <rect key="frame" x="8" y="265" width="51.5" height="21.5"/>
+                                <rect key="frame" x="8" y="245" width="274.66666666666669" height="21.666666666666686"/>
                                 <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pAt-zl-sfl">
-                                <rect key="frame" x="0.0" y="294.5" width="375" height="323.5"/>
+                                <rect key="frame" x="0.0" y="274.66666666666674" width="600" height="276.33333333333326"/>
                                 <connections>
                                     <segue destination="A3r-vy-wBz" kind="embed" id="s1b-BE-UoW"/>
                                 </connections>
                             </containerView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="p2b-ax-vw9"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="p2b-ax-vw9" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Zq6-sS-xkM" secondAttribute="trailing" constant="317.5" id="2Bw-0P-LmJ"/>
@@ -69,7 +66,6 @@
                             <constraint firstItem="p2b-ax-vw9" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="BUa-Ef-2SB" secondAttribute="trailing" constant="316" id="qCN-aL-IPp"/>
                             <constraint firstItem="YsF-3t-dXM" firstAttribute="leading" secondItem="p2b-ax-vw9" secondAttribute="leading" id="zpD-2A-8gt"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="p2b-ax-vw9"/>
                     </view>
                     <navigationItem key="navigationItem" id="w8d-ue-fSs"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -101,13 +97,13 @@
                                 <cells/>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="udK-hd-Wgp"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="bJ9-gn-qAt" secondAttribute="bottom" id="0bL-O9-v8n"/>
                             <constraint firstItem="bJ9-gn-qAt" firstAttribute="top" secondItem="ud1-wX-3jv" secondAttribute="top" id="4KX-51-mzi"/>
                             <constraint firstAttribute="trailing" secondItem="bJ9-gn-qAt" secondAttribute="trailing" id="cNW-yB-rz2"/>
                             <constraint firstItem="bJ9-gn-qAt" firstAttribute="leading" secondItem="ud1-wX-3jv" secondAttribute="leading" id="rWP-PP-Bc2"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="udK-hd-Wgp"/>
                     </view>
                     <connections>
                         <outlet property="albumsCollectionView" destination="bJ9-gn-qAt" id="jul-Qp-C4q"/>
@@ -126,17 +122,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="58" estimatedRowHeight="58" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UB2-Ud-BBM">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="323.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="323.66666666666669"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Qs3-wd-mWi"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="UB2-Ud-BBM" secondAttribute="bottom" id="QeG-tK-g96"/>
                             <constraint firstAttribute="trailing" secondItem="UB2-Ud-BBM" secondAttribute="trailing" id="Scc-y5-jzX"/>
                             <constraint firstItem="UB2-Ud-BBM" firstAttribute="leading" secondItem="Cfo-5Q-fTk" secondAttribute="leading" id="kZL-Io-nXu"/>
                             <constraint firstItem="UB2-Ud-BBM" firstAttribute="top" secondItem="Cfo-5Q-fTk" secondAttribute="top" id="ub5-Tm-x0p"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Qs3-wd-mWi"/>
                     </view>
                     <connections>
                         <outlet property="tracksTableView" destination="UB2-Ud-BBM" id="kpf-lg-fAZ"/>

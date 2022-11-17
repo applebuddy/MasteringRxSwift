@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 struct Album: Codable {
     
     let id, name, albumArtWork, artist: String
@@ -19,8 +18,6 @@ struct Album: Codable {
         case artist
     }
 }
-
-
 
 // MARK: Convenience initializers
 

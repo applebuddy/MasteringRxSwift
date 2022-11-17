@@ -125,7 +125,7 @@ extension UIView {
             layer.shadowRadius = newValue
         }
     }
-    func fillToSuperView(){
+    func fillToSuperView() {
         translatesAutoresizingMaskIntoConstraints = false
         if let superview = superview {
             leftAnchor.constraint(equalTo: superview.leftAnchor).isActive = true

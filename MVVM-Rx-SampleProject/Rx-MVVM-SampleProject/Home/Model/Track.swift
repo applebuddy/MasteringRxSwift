@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 struct Track: Codable {
     let id, name, trackArtWork, trackAlbum: String
     let artist: String
@@ -20,6 +19,7 @@ struct Track: Codable {
         case artist
     }
 }
+
 extension Track {
     init?(data: Data) {
         do {

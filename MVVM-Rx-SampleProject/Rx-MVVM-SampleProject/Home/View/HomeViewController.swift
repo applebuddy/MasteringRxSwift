@@ -1,5 +1,5 @@
 //
-//  HomeVC.swift
+//  HomeViewController.swift
 //  Rx-MVVM-SampleProject
 //
 //  Created by Mohammad Zakizadeh on 9/27/18.
@@ -11,9 +11,9 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class HomeVC: UIViewController {
+class HomeViewController: UIViewController {
+  // MARK: - UI
   
-  // MARK: - SubViews
   // tracksVC가 들어갈 컨테이너 뷰
   @IBOutlet weak var tracksVCView: UIView!
   // albumsVC가 들어갈 컨테이너 뷰
@@ -36,7 +36,7 @@ class HomeVC: UIViewController {
     self.add(asChildViewController: viewController, to: albumsVCView)
     return viewController
   }()
-
+  
   private lazy var tracksViewController: TracksTableViewVC = {
     // Load Storyboard
     let storyboard = UIStoryboard(name: "Home", bundle: Bundle.main)
@@ -53,13 +53,15 @@ class HomeVC: UIViewController {
     self.add(asChildViewController: viewController, to: tracksVCView)
     return viewController
   }()
-
+  
+  // MARK: - Property
+  
   // 비즈니스 로직이 포함되어있는 ViewModel 생성
   var homeViewModel = HomeViewModel()
   // 구독 정보 관리에 사용되는 DisposeBag()
   let disposeBag = DisposeBag()
   
-  // MARK: - View's Cycle
+  // MARK: - Lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -67,7 +69,7 @@ class HomeVC: UIViewController {
     setupBindings()
     homeViewModel.requestData()
   }
-
+  
   // MARK: - Bindings
   /// View ~ ViewModel 바인딩 작업
   private func setupBindings() {
@@ -76,7 +78,7 @@ class HomeVC: UIViewController {
     // bomViewModel의 loading 이벤트와 HomeVC의 isAnimating binding
     homeViewModel.loading
       .bind(to: self.rx.isAnimating).disposed(by: disposeBag)
-
+    
     // observing errors to show
     // ViewModel의 error PublishSubject에서 에러 이벤트를 방출하면, 이에 맞게 View가 반응하도록 binding
     homeViewModel
@@ -91,7 +93,7 @@ class HomeVC: UIViewController {
         }
       })
       .disposed(by: disposeBag)
-
+    
     // binding albums to album container
     // viewModel의 albums data와 viewController의 album data를 바인딩, viewModel의 albums가 변경되면 viewController의 albums도 동일하게 변경된다.
     homeViewModel
@@ -99,7 +101,7 @@ class HomeVC: UIViewController {
       .observe(on: MainScheduler.instance)
       .bind(to: albumsViewController.albums)
       .disposed(by: disposeBag)
-
+    
     // binding tracks to track container
     // viewModel의 tracks data와 viewController의 album data를 바인딩, viewModel의 tracks가 변경되면 viewController의 tracks도 변경된다.
     homeViewModel

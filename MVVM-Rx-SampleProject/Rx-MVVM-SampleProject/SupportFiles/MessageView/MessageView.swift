@@ -37,13 +37,13 @@ class MessageView: UIView {
         super.init(coder: aDecoder)
         commonInit()
     }
-    private func commonInit(){
+    private func commonInit() {
         Bundle.main.loadNibNamed("MessageView", owner: self, options: nil)
         addSubview(containerView)
         containerView.frame = self.bounds
         containerView.autoresizingMask = [.flexibleHeight,.flexibleWidth]
     }
-    func showOnView(message:String,theme:Theme){
+    func showOnView(message: String, theme: Theme) {
         parentView = UIApplication.shared.keyWindow
         parentView.addSubview(self)
         addMaskView()
@@ -81,13 +81,13 @@ class MessageView: UIView {
         parentView.addSubview(maskingView)
         maskingView.fillToSuperView()
     }
-    func makeDim(){
+    func makeDim() {
         self.maskingView.backgroundColor = UIColor.clear
         UIView.animate(withDuration: 0.2, animations: {
             self.maskingView.backgroundColor = UIColor(white: 0, alpha: 0.3)
         })
     }
-    @objc func hideView(){
+    @objc func hideView() {
         hideTimer.invalidate()
         UIView.animate(withDuration: 0.2, animations: {
             self.maskingView.backgroundColor = .clear

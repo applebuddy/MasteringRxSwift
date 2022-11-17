@@ -28,7 +28,7 @@ class loadingView: UIView {
         super.init(coder: aDecoder)
         commonInit()
     }
-    private func commonInit(){
+    private func commonInit() {
         Bundle.main.loadNibNamed("LoadingView", owner: self, options: nil)
         addSubview(containerView)
         containerView.frame = self.bounds
@@ -36,11 +36,11 @@ class loadingView: UIView {
         containerView.addBlurAreaForLoading(area: containerView.bounds, style: .dark)
         containerView.bringSubviewToFront(messageLabel)
     }
-    public func startAnimation(){
+    public func startAnimation() {
         if animateView.isAnimating {return}
         animateView.startAnimating()
     }
-    public func stopAnimation(){
+    public func stopAnimation() {
         animateView.stopAnimating()
     }
 }

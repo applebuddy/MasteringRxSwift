@@ -42,7 +42,7 @@ class AlbumsCollectionViewCell: UICollectionViewCell {
             self.albumTitle.text = album.name
         }
     }
-    private func backViewGenrator(){
+    private func backViewGenrator() {
         backView.loadImage(fromURL: album.albumArtWork)
     }
     override func prepareForReuse() {

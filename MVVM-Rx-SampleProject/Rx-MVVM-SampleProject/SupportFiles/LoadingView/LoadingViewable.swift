@@ -14,7 +14,7 @@ protocol loadingViewable {
     func stopAnimating()
 }
 extension loadingViewable where Self : UIViewController {
-    func startAnimating(){
+    func startAnimating() {
         let animateLoading = loadingView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
         view.addSubview(animateLoading)
         view.bringSubviewToFront(animateLoading)

@@ -10,15 +10,15 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class TracksTableViewVC: UIViewController {
+class TracksTableViewController: UIViewController {
   // MARK: - UI
 
   @IBOutlet private weak var tracksTableView: UITableView!
   
   // MARK: - Property
 
-  /// UIITableView와 바인딩 되는 tracks PublishSubject
-  public var tracks = PublishSubject<[Track]>()
+  /// HomeViewModel의 tracksSubject와 바인딩 되는 tracks PublishSubject
+  private(set) var tracksSubject = PublishSubject<[Track]>()
   private let disposeBag = DisposeBag()
   
   // MARK: - Lifecycle
@@ -36,7 +36,7 @@ class TracksTableViewVC: UIViewController {
       forCellReuseIdentifier: String(describing: TracksTableViewCell.self)
     )
     
-    tracks.bind(to: tracksTableView.rx.items(
+    tracksSubject.bind(to: tracksTableView.rx.items(
       cellIdentifier: String(describing: TracksTableViewCell.self),
       cellType: TracksTableViewCell.self)
     ) { (row, track, cell) in

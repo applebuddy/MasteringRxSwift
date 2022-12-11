@@ -10,15 +10,15 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class AlbumsCollectionViewVC: UIViewController {
+class AlbumsCollectionViewController: UIViewController {
   // MARK: - UI
 
   @IBOutlet private weak var albumsCollectionView: UICollectionView!
   
   // MARK: - Property
 
-  /// UICollectionView와 바인딩 되는 albums PublisherSubject
-  public var albums = PublishSubject<[Album]>()
+  /// HomeViewModel의 albumsSubject 이벤트를 전달받아서 UI Binding에 사용
+  public let albumsSubject = PublishSubject<[Album]>()
   private let disposeBag = DisposeBag()
   
   // MARK: - Lifecycle
@@ -37,16 +37,17 @@ class AlbumsCollectionViewVC: UIViewController {
       forCellWithReuseIdentifier: String(describing: AlbumsCollectionViewCell.self)
     )
 
-    albums.bind(to: albumsCollectionView.rx.items(
+    albumsSubject.bind(to: albumsCollectionView.rx.items(
       cellIdentifier: String(describing: AlbumsCollectionViewCell.self),
       cellType: AlbumsCollectionViewCell.self)
-    ) { (row, album, cell) in
+    ) { row, album, cell in
       cell.album = album
       cell.withBackView = true
     }.disposed(by: disposeBag)
 
-    albumsCollectionView.rx.willDisplayCell
-      .subscribe(onNext: ({ (cell,indexPath) in
+    albumsCollectionView.rx
+      .willDisplayCell
+      .subscribe(onNext: ({ cell, indexPath in
         cell.alpha = 0
         let transform = CATransform3DTranslate(CATransform3DIdentity, 0, -250, 0)
         cell.layer.transform = transform

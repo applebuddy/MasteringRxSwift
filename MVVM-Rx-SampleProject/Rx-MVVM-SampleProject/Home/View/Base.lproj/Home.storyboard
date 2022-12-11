@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -9,22 +11,22 @@
         <!--Home View Controller-->
         <scene sceneID="dEb-bJ-HXp">
             <objects>
-                <viewController storyboardIdentifier="home" id="3sy-G2-wrp" customClass="HomeViewController" customModule="MVVMRx" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="home" id="3sy-G2-wrp" customClass="HomeViewController" customModule="Rx_MVVM_SampleProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bcg-xB-32G">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="U7y-z4-jvz">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Albums" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="BUa-Ef-2SB">
-                                <rect key="frame" x="8" y="32" width="276" height="19"/>
+                                <rect key="frame" x="8" y="79" width="66" height="19"/>
                                 <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YsF-3t-dXM">
-                                <rect key="frame" x="0.0" y="67" width="600" height="170"/>
+                                <rect key="frame" x="0.0" y="114" width="390" height="170"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="NHO-Lo-elO"/>
                                 </constraints>
@@ -33,13 +35,13 @@
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tracks" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Zq6-sS-xkM">
-                                <rect key="frame" x="8" y="245" width="274.66666666666669" height="21.666666666666686"/>
+                                <rect key="frame" x="8" y="292" width="64.666666666666671" height="21.666666666666686"/>
                                 <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pAt-zl-sfl">
-                                <rect key="frame" x="0.0" y="274.66666666666674" width="600" height="276.33333333333326"/>
+                                <rect key="frame" x="0.0" y="321.66666666666674" width="390" height="439.33333333333326"/>
                                 <connections>
                                     <segue destination="A3r-vy-wBz" kind="embed" id="s1b-BE-UoW"/>
                                 </connections>
@@ -78,16 +80,16 @@
             </objects>
             <point key="canvasLocation" x="5167" y="-135"/>
         </scene>
-        <!--Albums Collection ViewVC-->
+        <!--Albums Collection View Controller-->
         <scene sceneID="QmR-8p-Ww8">
             <objects>
-                <viewController storyboardIdentifier="AlbumsCollectionViewVC" id="bmE-T1-rwJ" customClass="AlbumsCollectionViewVC" customModule="MVVMRx" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AlbumsCollectionViewController" id="bmE-T1-rwJ" customClass="AlbumsCollectionViewController" customModule="Rx_MVVM_SampleProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ud1-wX-3jv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="170"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bJ9-gn-qAt">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="170"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="JCf-F8-tbV">
                                     <size key="itemSize" width="130" height="165"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -113,16 +115,16 @@
             </objects>
             <point key="canvasLocation" x="6092" y="-324"/>
         </scene>
-        <!--Tracks Table ViewVC-->
+        <!--Tracks Table View Controller-->
         <scene sceneID="8zI-ec-Eaf">
             <objects>
-                <viewController storyboardIdentifier="TracksTableViewVC" id="A3r-vy-wBz" customClass="TracksTableViewVC" customModule="MVVMRx" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TracksTableViewController" id="A3r-vy-wBz" customClass="TracksTableViewController" customModule="Rx_MVVM_SampleProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cfo-5Q-fTk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="323.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="439.33333333333331"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="58" estimatedRowHeight="58" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UB2-Ud-BBM">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="323.66666666666669"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="439.33333333333331"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
                             </tableView>
                         </subviews>

@@ -3,12 +3,12 @@ import RxSwift
 import RxCocoa
 
 // MARK: - section 12. MVVM with RxSwift
-// MVC 패턴 : MVC, Model, View, Controller로 구성되는 디자인패턴, 가장 구현 난이도가 쉽지만 Massive View Controller, bad testability의 문제점이 있다.
+// MVC 패턴 : MVC, Model, ViewController로 구성되는 디자인패턴, 가장 구현 난이도가 쉽지만 Massive View Controller, bad testability의 문제점이 있다.
 // MVVM 패턴 : View, ViewModel(View와 바인딩되는 데이터), Model로 구성되는 디자인패턴
 // - View <-> ViewModel <-> Model
 // - MVC의 Massive ViewController로 인한 Testability 문제점을 해소할 수 있는 디자인패턴 기법 중 하나.
 // MARK: - Section 11. Error Handling
-// MARK: 80. MAnaging Errors
+// MARK: 80. Managing Errors
 // 1) catchAndReturn : 에러 발생 시 지정된 특정 값을 전달
 // 2) retry : 에러 발생시 재시도
 
@@ -30,7 +30,6 @@ source.scan(0, accumulator: +)
     print($0) // 1, 3, 6, 10, 15 -> 마지막 15만 출력될 reduce와 달리 scan operator는 합 연산 과정이 모두 출력된다.
   }).disposed(by: disposeBag)
 */
-
 // MARK: 65. reduce operator
 // reduce operator는 초기값을 지정하고 Sequence에 대한 연산을 통해 하나의 특정한 값으로 변환한다.
 /*
@@ -50,7 +49,7 @@ source.reduce(0, accumulator: { summary, value in
 
 
 // MARK: 64: withLatestFrom operator
-// withLatestFrom을 통해 특정 OBservable 인자에 대한 최신 이벤트값을 받을 수 있다.
+// withLatestFrom을 통해 특정 Observable 인자에 대한 최신 이벤트값을 받을 수 있다.
 // ex) button이 withLatestFrom 인자로 특정 텍스트필드 Observable을 넣으면, button이 클릭될 때마다 텍스트필드의 최신 값을 감지할 수 있다.
 /*
 let disposeBag = DisposeBag()
@@ -145,6 +144,7 @@ observable.subscribe(onNext: {
 // 따라서 연산작업을 한 후 마지막에 subscribe하여 Reactive 하게 처리를 하고자 할때 유용하다.
 
 // flatMapLatest는 가장 마지막의 latest Observable을 반환한다.
+/*
 let disposeBag = DisposeBag()
 struct Student {
   var score: BehaviorRelay<Int>
@@ -160,6 +160,8 @@ let map = student // PublishSubject<Student>
   .map { $0.score.asObservable() } // Observable<Observable<Int>> -> map 연산자를 사용하는 경우, 이대로 subscribe 할 경우 정상적으로 값을 구독하여 감지할 수 없다.
 let flatMap = student.asObservable() // Observable<Student>
   .flatMap { $0.score.asObservable() } // Observable<Int> -> flatMap을 사용하면 Observable<Int>로 변환되어 subscribe 할 시, score 값을 구독 감지할 수 있다.
+*/
+
 // flatMap example)
 /*
 student.asObservable()
